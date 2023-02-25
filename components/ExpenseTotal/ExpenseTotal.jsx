@@ -8,7 +8,7 @@ export default function ExpenseTotal ({ expenses, }) {
         Last 7 days
       </Text>
       <Text style={styles.total}>
-        ${expenses.reduce((acum, expense) => acum + Number(expense.amount), 0)}
+        ${Number(expenses.reduce((acum, expense) => acum + Number(expense.amount), 0)).toFixed(2)}
       </Text>
     </View>
   );
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
-    backgroundColor: GlobalStyles.colors.primary,
+    backgroundColor: GlobalStyles.colors.primary50,
     borderRadius: 5,
     elevation: 3,
     shadowColor: GlobalStyles.colors.gray500,

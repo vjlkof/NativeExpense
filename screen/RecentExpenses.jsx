@@ -6,9 +6,18 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 export default function RecentExpenses ({ expenses, }) {
   const bottomBarHeight = useBottomTabBarHeight();
   return (
-    <View style={{ marginBottom: bottomBarHeight + 65, }}>
+    <View style={[styles.pageContainer, { marginBottom: bottomBarHeight, },]}>
       <ExpenseTotal expenses={expenses} />
       <ExpenseList expenses={expenses}/>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  pageContainer: {
+    flex: 1,
+    paddingTop: 24,
+    paddingHorizontal: 20,
+    paddingBottom: 5,
+  },
+});

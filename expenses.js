@@ -1,9 +1,9 @@
 const expenses = [
   {
     id: 1,
-    description: 'rent',
+    description: 'lorem ipsum dolor sit amet, consect lorem ipsu dolor',
     date: new Date('2022/02/01'),
-    amount: '800',
+    amount: '8000000',
   },
   {
     id: 2,

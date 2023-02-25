@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { GlobalStyles } from '../../../constants/constants';
+import getFormattedDate from '../../../helpers/getFormattedDate';
 
 export default function ExpenseItem ({ expense, }) {
   return (
@@ -9,12 +10,12 @@ export default function ExpenseItem ({ expense, }) {
           {expense.description}
         </Text>
         <Text style={styles.date}>
-          {expense.date.toString()}
+          {getFormattedDate(expense.date)}
         </Text>
       </View>
       <View style={styles.rightContent}>
         <Text style={styles.amount}>
-          {expense.amount}
+          ${Number(expense.amount).toFixed(2)}
         </Text>
       </View>
     </View>
@@ -23,10 +24,11 @@ export default function ExpenseItem ({ expense, }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: 8,
-    padding: 12,
+    padding: 15,
     backgroundColor: GlobalStyles.colors.primary500,
     borderRadius: 5,
     elevation: 3,
@@ -39,7 +41,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
   },
   leftContent: {
-    margin: 15,
+    flex: 2.5,
+    marginRight: 5,
   },
   description: {
     color: GlobalStyles.colors.primary50,
@@ -52,15 +55,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   rightContent: {
+    flex: 1,
     backgroundColor: GlobalStyles.colors.primary50,
     justifyContent: 'center',
     alignSelf: 'center',
     borderRadius: 4,
-    // height: 50,
-    padding: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 5,
   },
   amount: {
     color: GlobalStyles.colors.primary800,
     fontWeight: 'bold',
+    alignSelf: 'center',
   },
 });
