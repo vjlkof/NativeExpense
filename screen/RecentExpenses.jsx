@@ -7,7 +7,9 @@ export default function RecentExpenses ({ expenses, }) {
   const bottomBarHeight = useBottomTabBarHeight();
   return (
     <View style={[styles.pageContainer, { marginBottom: bottomBarHeight, },]}>
-      <ExpenseTotal expenses={expenses} />
+      <ExpenseTotal expenses={expenses}>
+        Last 7 Days
+      </ExpenseTotal>
       <ExpenseList expenses={expenses}/>
     </View>
   );

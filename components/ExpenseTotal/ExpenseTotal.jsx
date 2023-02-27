@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { GlobalStyles } from '../../constants/constants';
 
-export default function ExpenseTotal ({ expenses, }) {
+export default function ExpenseTotal ({ expenses, children, }) {
   return (
     <View style={styles.totalContainer}>
       <Text style={styles.totalDescription}>
-        Last 7 days
+        {children}
       </Text>
       <Text style={styles.total}>
         ${Number(expenses.reduce((acum, expense) => acum + Number(expense.amount), 0)).toFixed(2)}

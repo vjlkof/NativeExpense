@@ -1,13 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import ExpenseList from '../components/ExpensesList/ExpenseList';
+import ExpenseTotal from '../components/ExpenseTotal/ExpenseTotal';
 
-export default function RecentExpenses ({ expenses, }) {
+export default function AllExpenses ({ expenses, }) {
   const bottomBarHeight = useBottomTabBarHeight();
   return (
     <View style={[styles.pageContainer, { marginBottom: bottomBarHeight, },]}>
-      <Text>
-        All Expenses
-      </Text>
+      <ExpenseTotal expenses={expenses}>
+        Total
+      </ExpenseTotal>
+      <ExpenseList expenses={expenses}/>
     </View>
   );
 }

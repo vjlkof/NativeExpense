@@ -2,7 +2,7 @@ const expenses = [
   {
     id: 1,
     description: 'lorem ipsum dolor sit amet, consect lorem ipsu dolor',
-    date: new Date('2022/02/01'),
+    date: new Date('2023/02/26'),
     amount: '8000000',
   },
   {
@@ -17,32 +17,32 @@ const expenses = [
     amount: '200',
   }, {
     id: 4,
-    description: 'Something',
-    date: new Date('2022/03/22'),
+    description: 'Something1',
+    date: new Date('2023/02/19'),
     amount: '400',
   }, {
     id: 5,
-    description: 'Something',
-    date: new Date('2022/03/22'),
+    description: 'Something2',
+    date: new Date('2023/02/20'),
     amount: '400',
   }, {
     id: 6,
-    description: 'Something',
-    date: new Date('2022/03/22'),
+    description: 'Something3',
+    date: new Date('2022/02/22'),
     amount: '400',
   }, {
     id: 7,
-    description: 'Something',
+    description: 'Something4',
     date: new Date('2022/03/22'),
     amount: '400',
   }, {
     id: 8,
-    description: 'Something',
+    description: 'Something5',
     date: new Date('2022/03/22'),
     amount: '400',
   }, {
     id: 9,
-    description: 'Something',
+    description: 'Something6',
     date: new Date('2022/03/22'),
     amount: '400',
   },
