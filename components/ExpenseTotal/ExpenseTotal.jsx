@@ -1,14 +1,15 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { GlobalStyles } from '../../constants/constants';
 
-export default function ExpenseTotal ({ expenses, children, }) {
+export default function ExpenseTotal({ expenses, children }) {
   return (
     <View style={styles.totalContainer}>
-      <Text style={styles.totalDescription}>
-        {children}
-      </Text>
+      <Text style={styles.totalDescription}>{children}</Text>
       <Text style={styles.total}>
-        ${Number(expenses.reduce((acum, expense) => acum + Number(expense.amount), 0)).toFixed(2)}
+        $
+        {Number(
+          expenses.reduce((acum, expense) => acum + Number(expense.amount), 0)
+        ).toFixed(2)}
       </Text>
     </View>
   );

@@ -3,27 +3,21 @@ import { GlobalStyles } from '../../../constants/constants';
 import getFormattedDate from '../../../helpers/getFormattedDate';
 import { useNavigation } from '@react-navigation/native';
 
-export default function ExpenseItem ({ expense, }) {
+export default function ExpenseItem({ expense }) {
   const navigation = useNavigation();
 
-  function onPressItem (expense) {
-    navigation.navigate('ExpenseDetail', { expense, });
-  };
+  function onPressItem(expense) {
+    navigation.navigate('UpdateExpenseDetail', { expense });
+  }
 
   return (
-    <Pressable style={styles.container} onPress={(() => onPressItem(expense))}>
+    <Pressable style={styles.container} onPress={() => onPressItem(expense)}>
       <View style={styles.leftContent}>
-        <Text style={styles.description}>
-          {expense.description}
-        </Text>
-        <Text style={styles.date}>
-          {getFormattedDate(expense.date)}
-        </Text>
+        <Text style={styles.description}>{expense.description}</Text>
+        <Text style={styles.date}>{getFormattedDate(expense.date)}</Text>
       </View>
       <View style={styles.rightContent}>
-        <Text style={styles.amount}>
-          ${Number(expense.amount).toFixed(2)}
-        </Text>
+        <Text style={styles.amount}>${Number(expense.amount).toFixed(2)}</Text>
       </View>
     </Pressable>
   );

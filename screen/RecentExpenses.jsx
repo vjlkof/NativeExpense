@@ -3,14 +3,12 @@ import ExpenseList from '../components/ExpensesList/ExpenseList';
 import ExpenseTotal from '../components/ExpenseTotal/ExpenseTotal';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
-export default function RecentExpenses ({ expenses, }) {
+export default function RecentExpenses({ expenses }) {
   const bottomBarHeight = useBottomTabBarHeight();
   return (
-    <View style={[styles.pageContainer, { marginBottom: bottomBarHeight, },]}>
-      <ExpenseTotal expenses={expenses}>
-        Last 7 Days
-      </ExpenseTotal>
-      <ExpenseList expenses={expenses}/>
+    <View style={[styles.pageContainer, { marginBottom: bottomBarHeight }]}>
+      <ExpenseTotal expenses={expenses}>Last 7 Days</ExpenseTotal>
+      <ExpenseList expenses={expenses} />
     </View>
   );
 }
