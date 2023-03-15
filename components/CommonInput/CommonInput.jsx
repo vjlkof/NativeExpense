@@ -8,6 +8,7 @@ export default function CommonInput({
   multiline = false,
   height = 0,
   editable = true,
+  value = '',
 }) {
   const propsStyles = StyleSheet.create({
     height: !height ? 35 : height,
@@ -23,6 +24,7 @@ export default function CommonInput({
         multiline={multiline}
         numberOfLines={5}
         editable={editable}
+        value={value}
       ></TextInput>
     </View>
   );

@@ -1,35 +1,117 @@
-import { View, Text, Button, Input, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Alert } from 'react-native';
+import { GlobalStyles } from '../constants/constants';
+import CommonButton from '../components/CommonButton/CommonButton';
+import CommonInput from '../components/CommonInput/CommonInput';
+import PressableIconButton from '../components/PressableIconButton/PressableIconButton';
+import getFormattedDate from '../helpers/getFormattedDate';
 
 export default function UpdateExpenseDetail({ route }) {
   const expense = route.params.expense;
 
   return (
-    <View style={styles.detailPageContainer}>
-      <Text>Your Expense</Text>
-      {/* <View>
-        <Input>
-        </Input>
-        <Input>
-        </Input>
+    <SafeAreaView style={styles.detailPageContainer}>
+      <Text style={styles.title}>Your Expense</Text>
+      <View style={styles.amountDateContainer}>
+        <View style={styles.amountDateBlockContainer}>
+          <CommonInput
+            title={'Amount'}
+            placeholder={'Amount'}
+            type={'numeric'}
+            value={expense.amount}
+          />
+        </View>
+        <View style={styles.amountDateBlockContainer}>
+          <CommonInput
+            title={'Date'}
+            placeholder={'YYYY-MM-DD'}
+            value={getFormattedDate(expense.date)}
+          />
+        </View>
       </View>
-      <View>
-        <Input>
-        </Input>
+      <View style={styles.descriptionContainer}>
+        <View style={styles.descriptionBlockContainer}>
+          <CommonInput
+            title={'Description'}
+            placeholder={'Description'}
+            multiline={true}
+            height={100}
+            value={expense.description}
+          />
+        </View>
       </View>
-      <View>
-        <Button>
-        </Button>
-        <Button>
-        </Button>
-      </View> */}
-    </View>
+      <View style={styles.buttonContainer}>
+        <CommonButton
+          title='Cancel'
+          width={130}
+          height={40}
+          titleColor={GlobalStyles.colors.primary200}
+          onPress={() => Alert.alert('left button pressed')}
+        />
+        <CommonButton
+          title={'Update'}
+          width={130}
+          height={40}
+          titleColor={GlobalStyles.colors.primary}
+          backgroundColor={GlobalStyles.colors.primary500}
+          onPress={() => Alert.alert('Right button pressed')}
+        />
+      </View>
+      <View style={styles.deleteContainer}>
+        <PressableIconButton
+          iconName={'md-trash'}
+          size={40}
+          color={GlobalStyles.colors.error500}
+          onPress={() => Alert.alert('Delete button pressed')}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   detailPageContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 80,
+    marginHorizontal: 25,
+  },
+
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: GlobalStyles.colors.primary,
+    alignSelf: 'center',
+  },
+
+  amountDateContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 40,
+  },
+
+  descriptionContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+  },
+
+  amountDateBlockContainer: {
+    width: '48%',
+  },
+
+  descriptionBlockContainer: {
+    width: '100%',
+  },
+
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 50,
+    borderBottomWidth: 2,
+    borderBottomColor: GlobalStyles.colors.primary200,
+    paddingBottom: 15,
+  },
+  deleteContainer: {
     alignItems: 'center',
+    marginTop: 15,
   },
 });

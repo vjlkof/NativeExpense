@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet, SafeAreaView, Alert } from 'react-native';
-import { GlobalStyles } from '../constants/constants';
-import CommonButton from '../components/CommonButton/CommonButton';
-import CommonInput from '../components/CommonInput/CommonInput';
+import { GlobalStyles } from '../../constants/constants';
+import CommonButton from '../CommonButton/CommonButton';
+import CommonInput from '../CommonInput/CommonInput';
+import getFormattedDate from '../../helpers/getFormattedDate';
 
-export default function AddExpenseDetail({ expense }) {
+export default function ExpenseDetail({ expense, update = false }) {
   return (
     <SafeAreaView style={styles.detailPageContainer}>
       <Text style={styles.title}>Your Expense</Text>
@@ -13,10 +14,15 @@ export default function AddExpenseDetail({ expense }) {
             title={'Amount'}
             placeholder={'Amount'}
             type={'numeric'}
+            value={update ? expense.amount : ''}
           />
         </View>
         <View style={styles.amountDateBlockContainer}>
-          <CommonInput title={'Date'} placeholder={'YYYY-MM-DD'} />
+          <CommonInput
+            title={'Date'}
+            placeholder={'YYYY-MM-DD'}
+            value={update ? getFormattedDate(expense.date) : ''}
+          />
         </View>
       </View>
       <View style={styles.descriptionContainer}>
@@ -26,6 +32,7 @@ export default function AddExpenseDetail({ expense }) {
             placeholder={'Description'}
             multiline={true}
             height={100}
+            value={update ? expense.description : ''}
           />
         </View>
       </View>
@@ -38,7 +45,7 @@ export default function AddExpenseDetail({ expense }) {
           onPress={() => Alert.alert('left button pressed')}
         />
         <CommonButton
-          title={'Add'}
+          title={update ? 'update' : 'Add'}
           width={130}
           height={40}
           titleColor={GlobalStyles.colors.primary}
