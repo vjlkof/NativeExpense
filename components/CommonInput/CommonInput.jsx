@@ -1,15 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { GlobalStyles } from '../../constants/constants';
 
-export default function CommonInput({
-  title = '',
-  placeholder = '',
-  type = 'default',
-  multiline = false,
-  height = 0,
-  editable = true,
-  value = '',
-}) {
+export default function CommonInput({ title = '', height = 0, inputConfig }) {
   const propsStyles = StyleSheet.create({
     height: !height ? 35 : height,
   });
@@ -19,12 +11,7 @@ export default function CommonInput({
       <Text style={styles.text}>{title}</Text>
       <TextInput
         style={[styles.textInput, propsStyles]}
-        placeholder={placeholder}
-        keyboardType={type}
-        multiline={multiline}
-        numberOfLines={5}
-        editable={editable}
-        value={value}
+        {...inputConfig}
       ></TextInput>
     </View>
   );

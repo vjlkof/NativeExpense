@@ -1,9 +1,33 @@
+import { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Alert } from 'react-native';
 import { GlobalStyles } from '../constants/constants';
 import CommonButton from '../components/CommonButton/CommonButton';
 import CommonInput from '../components/CommonInput/CommonInput';
 
-export default function AddExpenseDetail({ expense }) {
+export default function AddExpenseDetail({ route }) {
+  const addExpense = route.params.addExpense;
+  const [inputValues, setInputValues] = useState({
+    amout: '',
+    date: '',
+    description: '',
+  });
+
+  function onHandlerChange(inputIdentifier, value) {
+    console.log('value', value);
+    setInputValues((currentInputs) => ({
+      ...currentInputs,
+      [inputIdentifier]: value,
+    }));
+  }
+
+  function addExpenseHandler() {
+    console.log('enter add');
+    addExpense({
+      id: 9,
+      ...inputValues,
+    });
+  }
+
   return (
     <SafeAreaView style={styles.detailPageContainer}>
       <Text style={styles.title}>Your Expense</Text>
@@ -11,21 +35,39 @@ export default function AddExpenseDetail({ expense }) {
         <View style={styles.amountDateBlockContainer}>
           <CommonInput
             title={'Amount'}
-            placeholder={'Amount'}
-            type={'numeric'}
+            inputConfig={{
+              placeholder: 'Amount',
+              type: 'numeric',
+              onChangeText: (value) => onHandlerChange('amount', value),
+              value: inputValues.amount,
+            }}
           />
         </View>
         <View style={styles.amountDateBlockContainer}>
-          <CommonInput title={'Date'} placeholder={'YYYY-MM-DD'} />
+          <CommonInput
+            title={'Date'}
+            inputConfig={{
+              placeholder: 'YYYY-MM-DD',
+              type: 'numeric',
+              onChangeText: (value) => onHandlerChange('date', value),
+              value: inputValues.date,
+              maxLength: 10,
+            }}
+          />
         </View>
       </View>
       <View style={styles.descriptionContainer}>
         <View style={styles.descriptionBlockContainer}>
           <CommonInput
             title={'Description'}
-            placeholder={'Description'}
-            multiline={true}
             height={100}
+            inputConfig={{
+              placeholder: 'Description',
+              type: 'numeric',
+              onChangeText: (value) => onHandlerChange('description', value),
+              value: inputValues.description,
+              multiline: true,
+            }}
           />
         </View>
       </View>
@@ -43,7 +85,7 @@ export default function AddExpenseDetail({ expense }) {
           height={40}
           titleColor={GlobalStyles.colors.primary}
           backgroundColor={GlobalStyles.colors.primary500}
-          onPress={() => Alert.alert('Right button pressed')}
+          onPress={() => addExpenseHandler()}
         />
       </View>
     </SafeAreaView>

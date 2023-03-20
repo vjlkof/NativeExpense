@@ -22,8 +22,13 @@ function TabScreen() {
   );
   const navigation = useNavigation();
 
+  function addExpense(newExpense) {
+    console.log('addExpense plus: ', newExpense);
+    setExpenseList((prev) => [...prev, newExpense]);
+  }
+
   function onPressHeaderButton() {
-    navigation.navigate('AddExpenseDetail');
+    navigation.navigate('AddExpenseDetail', { addExpense });
   }
 
   return (
